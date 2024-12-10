@@ -14,7 +14,6 @@ if (isset($_GET['delete'])) {
     exit();
 }
 
-// Fetch user data
 $sql = "SELECT matric, name, role FROM users";
 $result = $conn->query($sql);
 ?>
@@ -32,10 +31,8 @@ $result = $conn->query($sql);
         <td><?php echo $row['name']; ?></td>
         <td><?php echo $row['role']; ?></td>
         <td>
-            <!-- Update link -->
             <a href="update_user.php?matric=<?php echo $row['matric']; ?>">Update</a>
             |
-            <!-- Delete link -->
             <a href="update.php?delete=<?php echo $row['matric']; ?>" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
         </td>
     </tr>
