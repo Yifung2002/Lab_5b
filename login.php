@@ -13,9 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
         if (password_verify($password, $user['password'])) {
-            $_SESSION['user'] = $user;
-            header('Location: User.php');
-            exit;
+            $_SESSION['user'] = $user; 
+            header('Location: User.php'); 
+            exit();
         }
     }
     echo "Invalid username or password, try <a href='login.php'>login</a> again.";
