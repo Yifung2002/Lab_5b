@@ -6,7 +6,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch user data for pre-filling the form
 if (isset($_GET['matric'])) {
     $matric = $_GET['matric'];
     $sql = "SELECT * FROM users WHERE matric = '$matric'";
@@ -23,7 +22,6 @@ if (isset($_GET['matric'])) {
     exit();
 }
 
-// Update user data in the database
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $matric = $_POST['matric']; // Matric remains unchanged
     $name = $_POST['name'];
@@ -51,19 +49,10 @@ $conn->close();
 <body>
     <h2>Update User</h2>
     <form method="POST" action="">
-        <!-- Matric field (read-only since it shouldn't be changed) -->
         Matric: <input type="text" name="matric" value="<?php echo $user['matric']; ?>" readonly><br>
-
-        <!-- Name field (editable) -->
         Name: <input type="text" name="name" value="<?php echo $user['name']; ?>" required><br>
-
-        <!-- Level field (read-only, cannot be updated) -->
         Access Level: <input type="text" name="level" value="<?php echo ucfirst($user['role']); ?>" readonly><br>
-
-        <!-- Submit button -->
         <button type="submit">Update</button>
-        
-        <!-- Cancel link -->
         <a href="update.php">Cancel</a>
     </form>
 </body>
