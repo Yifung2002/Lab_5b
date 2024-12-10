@@ -23,15 +23,14 @@ if (isset($_GET['matric'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $matric = $_POST['matric']; // Matric remains unchanged
+    $matric = $_POST['matric']; 
     $name = $_POST['name'];
 
     $sql = "UPDATE users SET name = '$name' WHERE matric = '$matric'";
 
     if ($conn->query($sql)) {
         echo "User updated successfully!";
-        // Redirect back to the user list or another page
-        header('Location: update.php'); // Replace with the correct page name
+        header('Location: update.php'); 
         exit();
     } else {
         echo "Error updating user: " . $conn->error;
