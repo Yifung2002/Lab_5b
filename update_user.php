@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION['user'])) {
+    header('Location: login.php');
+    exit();
+}
+
 // Database connection
 $conn = new mysqli('localhost', 'root', '', 'lab_5b');
 
