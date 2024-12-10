@@ -10,7 +10,7 @@ if ($conn->connect_error) {
 if (isset($_GET['delete'])) {
     $matric = $_GET['delete'];
     $conn->query("DELETE FROM users WHERE matric = '$matric'");
-    header('Location: update.php'); // Redirect to avoid re-execution on refresh
+    header('Location: update.php'); 
     exit();
 }
 
